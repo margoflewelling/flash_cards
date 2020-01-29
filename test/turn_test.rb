@@ -45,9 +45,3 @@ class TurnTest < Minitest::Test
   end
 
 end
-
-
-#
-# pry(main)> turn.feedback
-# #=> "Correct!"
-#
