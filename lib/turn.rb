@@ -14,9 +14,9 @@ attr_reader :guess, :card
 
   def feedback
     if @guess == card.answer
-      puts 'Correct!'
+      "Correct!"
     else
-      puts 'Incorrect.'
+      "Incorrect"
     end
   end
 
