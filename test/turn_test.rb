@@ -38,7 +38,6 @@ class TurnTest < Minitest::Test
    end
 
    def test_feedback
-     skip
      card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
      turn = Turn.new("Juneau", card)
      turn.feedback
