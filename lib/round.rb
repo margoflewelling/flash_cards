@@ -1,16 +1,19 @@
 
 class Round
-attr_reader :deck, :turns
+attr_reader :deck, :turns, :current_card, :card_rotator_number
 
   def initialize(deck)
     @deck = deck
     @turns = []
+    @card_rotator_number = 0
+    @current_card = deck.cards[card_rotator_number]
+
   end
 
 
-  def current_card
-    deck.cards[0]
-  end
+  # def current_card
+  #   deck.cards[0]
+  # end
 
 #
 # The take_turn method is the crux of this problem.
@@ -22,10 +25,10 @@ attr_reader :deck, :turns
 
   def take_turn(guess)
     # cards_answered_correctly = []
-    new_turn = Turn.new(guess, deck.cards[0])
+    new_turn = Turn.new(guess, current_card)
     turns << new_turn
+    @card_rotator_number += 1
     new_turn
-    require "pry"; binding.pry
     # if new_turn.correct?
     #  cards_answered_correctly << new_turn.card
     end
