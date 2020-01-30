@@ -1,13 +1,12 @@
 
 class Round
-attr_reader :deck, :turns, :current_card, :card_rotator_number
+  attr_reader :deck, :turns, :current_card, :card_rotator_number
 
   def initialize(deck)
     @deck = deck
     @turns = []
     @card_rotator_number = 0
     @current_card = deck.cards[card_rotator_number]
-
   end
 
 
@@ -31,8 +30,9 @@ attr_reader :deck, :turns, :current_card, :card_rotator_number
     new_turn
     # if new_turn.correct?
     #  cards_answered_correctly << new_turn.card
-    end
+    require "pry"; binding.pry
   end
+end
 
   # def number_correct
   #   number_right = cards_answered_correctly.length
