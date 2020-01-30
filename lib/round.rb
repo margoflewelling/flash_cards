@@ -4,11 +4,9 @@ attr_reader :deck, :turns
 
   def initialize(deck)
     @deck = deck
+    @turns = []
   end
 
-  def turns
-    []
-  end
 
   def current_card
     deck.cards[0]
@@ -27,6 +25,7 @@ attr_reader :deck, :turns
     new_turn = Turn.new(guess, deck.cards[0])
     turns << new_turn
     new_turn
+    require "pry"; binding.pry
     # if new_turn.correct?
     #  cards_answered_correctly << new_turn.card
     end
