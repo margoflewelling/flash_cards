@@ -1,6 +1,6 @@
 
 class Round
-attr_reader :deck
+attr_reader :deck, :turns
 
   def initialize(deck)
     @deck = deck
@@ -14,17 +14,23 @@ attr_reader :deck
     deck.cards[0]
   end
 
+#
+# The take_turn method is the crux of this problem.
+# The take_turn method takes a string representing the guess.
+#  It should create a new Turn object with the appropriate
+#  guess and Card. It should store this new Turn, as well as
+#  return it from the take_turn method. Also, when the take_turn
+#  method is called, the Round should move on to the next card in the deck.
 
-
-  # def take_turn(guess)
-  #   cards_answered_correctly = []
-  #   new_turn = turn.new(guess, @card)
-  #   puts new_turn
-  #   turns << new_turn
-  #   if new_turn.correct?
-  #    cards_answered_correctly << new_turn.card
-  #   end
-  # end
+  def take_turn(guess)
+    # cards_answered_correctly = []
+    new_turn = Turn.new(guess, deck.cards[0])
+    turns << new_turn
+    new_turn
+    # if new_turn.correct?
+    #  cards_answered_correctly << new_turn.card
+    end
+  end
 
   # def number_correct
   #   number_right = cards_answered_correctly.length
@@ -54,7 +60,6 @@ attr_reader :deck
 
 
 
-end
   # The take_turn method is the crux of this problem.
   # The take_turn method takes a string representing the guess.
   #  It should create a new Turn object with the appropriate guess and Card.
