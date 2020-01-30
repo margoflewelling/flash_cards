@@ -1,15 +1,17 @@
-require './lib/card'
-require './lib/turn'
-require './lib/deck'
 
 class Round
-attr_reader :deck, :turns, :current_card
+attr_reader :deck
 
-  def initialize(deck, turns = [], current_card = card_1)
+  def initialize(deck)
     @deck = deck
-    @turns = turns
-    @current_card = current_card
-    require "pry"; binding.pry
+  end
+
+  def turns
+    []
+  end
+
+  def current_card
+    deck.cards[0]
   end
 
 
@@ -29,24 +31,24 @@ attr_reader :deck, :turns, :current_card
      # puts number_right
   # end
 
-  def number_correct_by_category(cat)
-     category_count = 0
-      cards_answered_correctly.each do |card|
-      if card.category == cat
-        category_count += 1
-      end
-    end
-    category_count
-  end
-
-
-  def percent_correct
-    cards_answered_correctly.length / cards.count * 100
-  end
-
-  def percent_correct_by_category(cat)
-    number_correct_by_category(cat)/cards_in_category(cat) * 100
-  end
+  # def number_correct_by_category(cat)
+  #    category_count = 0
+  #     cards_answered_correctly.each do |card|
+  #     if card.category == cat
+  #       category_count += 1
+  #     end
+  #   end
+  #   category_count
+  # end
+  #
+  #
+  # def percent_correct
+  #   cards_answered_correctly.length / cards.count * 100
+  # end
+  #
+  # def percent_correct_by_category(cat)
+  #   number_correct_by_category(cat)/cards_in_category(cat) * 100
+  # end
 
 
 
