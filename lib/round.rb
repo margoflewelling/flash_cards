@@ -5,66 +5,49 @@ class Round
   def initialize(deck)
     @deck = deck
     @turns = []
-    @card_rotator_number = 0
-    @current_card = deck.cards[card_rotator_number]
+    @current_card = deck.cards[0]
+    @cards_answered_correctly = []
   end
-
-
-  # def current_card
-  #   deck.cards[0]
-  # end
-
-#
-# The take_turn method is the crux of this problem.
-# The take_turn method takes a string representing the guess.
-#  It should create a new Turn object with the appropriate
-#  guess and Card. It should store this new Turn, as well as
-#  return it from the take_turn method. Also, when the take_turn
-#  method is called, the Round should move on to the next card in the deck.
 
   def take_turn(guess)
-    # cards_answered_correctly = []
-    new_turn = Turn.new(guess, current_card)
+    new_turn = Turn.new(guess, @current_card)
     turns << new_turn
-    @card_rotator_number += 1
+    if new_turn.correct?
+    @cards_answered_correctly << new_turn.card
+    end
+    deck.cards.shift
+    @current_card = deck.cards[0]
     new_turn
-    # if new_turn.correct?
-    #  cards_answered_correctly << new_turn.card
-    require "pry"; binding.pry
   end
+
+
+  def number_correct
+    @cards_answered_correctly.length
+  end
+
+  def number_correct_by_category(cat)
+     category_count = 0
+      @cards_answered_correctly.each do |card|
+       if card.category == cat
+        category_count += 1
+       end
+      end
+    category_count.to_f
+   end
+
+  def percent_correct
+  @cards_answered_correctly.length / turns.length.to_f * 100
+  end
+
+
+  def percent_correct_by_category(cat)
+    number_cards_in_category = 0
+    turns.each do |turn|
+    if turn.card.category == (cat)
+    number_cards_in_category += 1
+    end
+    end
+    number_correct_by_category(cat)/number_cards_in_category * 100
+  end
+
 end
-
-  # def number_correct
-  #   number_right = cards_answered_correctly.length
-     # puts number_right
-  # end
-
-  # def number_correct_by_category(cat)
-  #    category_count = 0
-  #     cards_answered_correctly.each do |card|
-  #     if card.category == cat
-  #       category_count += 1
-  #     end
-  #   end
-  #   category_count
-  # end
-  #
-  #
-  # def percent_correct
-  #   cards_answered_correctly.length / cards.count * 100
-  # end
-  #
-  # def percent_correct_by_category(cat)
-  #   number_correct_by_category(cat)/cards_in_category(cat) * 100
-  # end
-
-
-
-
-
-  # The take_turn method is the crux of this problem.
-  # The take_turn method takes a string representing the guess.
-  #  It should create a new Turn object with the appropriate guess and Card.
-  #  It should store this new Turn, as well as return it from the take_turn method.
-  #  Also, when the take_turn method is called,
-  #  the Round should move on to the next card in the deck.
