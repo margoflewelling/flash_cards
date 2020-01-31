@@ -32,7 +32,7 @@ class Round
         category_count += 1
        end
       end
-    category_count.to_f
+    category_count
    end
 
   def percent_correct
@@ -47,7 +47,7 @@ class Round
     number_cards_in_category += 1
     end
     end
-    number_correct_by_category(cat)/number_cards_in_category * 100
+    number_correct_by_category(cat)/number_cards_in_category.to_f * 100
   end
 
 end
