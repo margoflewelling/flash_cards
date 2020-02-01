@@ -36,7 +36,7 @@ class Round
    end
 
   def percent_correct
-  @cards_answered_correctly.length / turns.length.to_f * 100
+  (@cards_answered_correctly.length / turns.length.to_f * 100).round(2)
   end
 
 
@@ -47,7 +47,7 @@ class Round
     number_cards_in_category += 1
     end
     end
-    number_correct_by_category(cat)/number_cards_in_category.to_f * 100
+    (number_correct_by_category(cat)/number_cards_in_category.to_f * 100).round(2)
   end
 
 end
