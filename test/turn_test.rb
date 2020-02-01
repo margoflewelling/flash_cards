@@ -22,7 +22,7 @@ class TurnTest < Minitest::Test
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     turn = Turn.new("Juneau", card)
     turn.guess
-   assert_equal turn.guess, "Juneau"
+    assert_equal turn.guess, "Juneau"
   end
 
 
@@ -31,13 +31,21 @@ class TurnTest < Minitest::Test
      turn = Turn.new("Juneau", card)
      turn.correct?
      assert_equal turn.correct?, true
+
+     card2 = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
+     turn2 = Turn.new("Saturn", card2)
+     assert_equal turn2.correct?, false
    end
 
    def test_feedback
      card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
      turn = Turn.new("Juneau", card)
      turn.feedback
-    assert_equal turn.feedback, "Correct!"
-  end
+     assert_equal turn.feedback, "Correct!"
+
+     card2 = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
+     turn2 = Turn.new("Saturn", card2)
+     assert_equal turn2.feedback, "Incorrect."
+   end
 
 end

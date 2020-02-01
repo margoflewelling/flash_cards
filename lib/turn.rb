@@ -12,10 +12,10 @@ attr_reader :guess, :card
   end
 
   def feedback
-    if correct? 
+    if correct?
       "Correct!"
     else
-      "Incorrect"
+      "Incorrect."
     end
   end
 
