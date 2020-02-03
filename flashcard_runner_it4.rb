@@ -6,14 +6,8 @@ require './lib/card_generator'
 
 def start
 
-  card_1 = Card.new("What does Phoebe eat?", "trash", :Phoebe)
-  card_2 = Card.new("What color sweater does Odie look best in?", "green", :Odie)
-  card_3 = Card.new("Who was Janis named after?", "janis joplin", :Other)
-  card_4 = Card.new("Who pooped in Margo's room?", "albus", :Other)
-  card_5 = Card.new("What dog does Louise hate?", "plum", :Other)
-  card_6 = Card.new("What will Phoebe's 15th party party theme be?", "chicken and waffles", :Phoebe)
-  card_7 = Card.new("What is Odie's hobby?", "agility", :Odie)
-  cards = [card_1, card_2, card_3, card_4, card_5, card_6, card_7]
+  cardgenerator = CardGenerator.new("./lib/cards.txt")
+  cards = cardgenerator.cards
   deck = Deck.new(cards)
   round = Round.new(deck)
 
